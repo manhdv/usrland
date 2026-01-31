@@ -96,7 +96,14 @@ sudo apt update
 
 This prevents accidental cross-release upgrades.
 
-## 5. Install the Canon printer driver
+## 5. Install CUPS and drivers:
+
+Install `cups`:
+
+```bash
+sudo apt install cups
+```
+
 Extract the Canon driver archive and run the installer:
 
 ```bash
