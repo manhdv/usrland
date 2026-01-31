@@ -4,6 +4,7 @@ description: 'This article offers a sample of basic Markdown syntax that can be 
 pubDate: 2019-03-11
 author: 'Hugo Authors, Radek'
 tags: []
+draft: true
 ---
 
 This article offers a sample of basic Markdown syntax that can be used in Astro content files, also it shows whether basic HTML elements are decorated with CSS in the Astro Terminal theme.
