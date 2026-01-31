@@ -4,6 +4,7 @@ description: 'The Astro Terminal theme uses Shiki as syntax highlighter, providi
 pubDate: 2019-03-10
 author: 'Radek'
 tags: []
+draft: true
 ---
 
 The Astro Terminal theme uses Shiki as syntax highlighter, providing beautiful and customizable code highlighting with a monochrome theme that matches the terminal aesthetic.
