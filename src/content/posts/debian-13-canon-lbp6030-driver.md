@@ -1,6 +1,6 @@
 ---
-title: 'Installing Canon LBP6030 UFRII LT Driver (v21.11) on Debian 13 (Trixie)'
-description: 'How to install the Canon LBP6030 UFRII LT printer driver v21.11 on Debian 13 (trixie) using deprecated GTK2 packages from Debian 12 and preventing unwanted upgrades.'
+title: 'Installing Canon UFRII LT Printer Driver Ver.5.00 on Debian 13 (Trixie)'
+description: 'How to install the Canon UFRII LT Printer Driver Ver.5.00 on Debian 13 (trixie) using deprecated GTK2 packages from Debian 12 and preventing unwanted upgrades.'
 pubDate: 2026-01-31
 author: 'Mage'
 image: ''
@@ -28,7 +28,7 @@ If your printer supports **IPP / AirPrint / Gutenprint**, use those instead.
 ## Driver Information
 
 - Printer models: **Canon LBP6030 / LBP6030B / LBP6030w**
-- Driver: **UFRII LT Printer Driver Ver. 21.11 (64-bit Linux)**
+- Driver: **UFRII LT Printer Driver Ver.5.00**
 - Status: **Unmaintained / legacy**
 - Dependency issue: **GTK2 removed in Debian 13**
 
@@ -120,7 +120,7 @@ If the installer reports missing dependencies, resolve them and re-run the scrip
 
 **Notes**
 
-- `apt-mark` hold locks the exact package versions and prevents upgrades
+- `apt-mark hold` locks the exact package versions and prevents upgrades
 - This setup survives normal `apt upgrade`
 - Major Debian version upgrades may require repeating this process
 
