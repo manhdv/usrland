@@ -113,19 +113,16 @@ sudo ./install.sh
 If the installer reports missing dependencies, resolve them and re-run the script.
 
 ## 6. Test printing
-* Add the printer via CUPS
 
-* Print a test page
-
-* If it prints successfully, do not modify the setup further
+- Add the printer via CUPS
+- Print a test page
+- If it prints successfully, do not modify the setup further
 
 **Notes**
 
-* `apt-mark` hold locks the exact package versions and prevents upgrades
-
-* This setup survives normal `apt upgrade`
-
-* Major Debian version upgrades may require repeating this process
+- `apt-mark` hold locks the exact package versions and prevents upgrades
+- This setup survives normal `apt upgrade`
+- Major Debian version upgrades may require repeating this process
 
 **Final Verdict**
 
