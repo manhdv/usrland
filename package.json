@@ -1,13 +1,13 @@
 {
-  "name": "astro-theme-terminal",
+  "name": "usrland",
+  "private": true,
   "type": "module",
-  "version": "1.0.0",
-  "description": "A terminal-inspired theme for Astro, ported from Hugo Terminal Theme by panr",
+  "description": "Personal blog of Mage, based on astro-theme-terminal",
   "license": "MIT",
-  "author": "Dennis Klappe",
+  "author": "Mage",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dennisklappe/astro-theme-terminal"
+    "url": "https://github.com/manhdv/usrland.git"
   },
   "keywords": [
     "astro",
@@ -28,7 +28,7 @@
     "astro": "^5.15.7"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.5",
+    "@astrojs/check": "^0.9.2",
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
     "typescript": "^5.9.3"
