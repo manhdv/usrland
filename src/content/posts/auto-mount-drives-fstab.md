@@ -18,7 +18,7 @@ lsblk -f
 Or, if you want less noise:
 
 ```bash
-blkid
+sudo blkid
 ```
 
 You’re looking for:
