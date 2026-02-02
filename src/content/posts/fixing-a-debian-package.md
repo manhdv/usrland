@@ -159,33 +159,100 @@ This is what reviewers want. Not your `.deb`.
 
 ---
 
-## 8. Upload for Review
+## 8. Create a Proper Patch
 
-### Debian Salsa (Preferred)
+Before bothering anyone, generate a clean patch.
 
-* Fork the package repo
-* Push your branch
-* Open a Merge Request
+From the source root:
 
-### Or via Debian BTS
+```bash
+dpkg-source --commit
+```
 
-* Create a bug report
-* Attach patch or source diff
-* Reference version bump
+This will:
 
-Never upload random tarballs. Ever.
+* Detect modified files
+* Ask for a patch name
+* Create `debian/patches/*.patch`
+* Update `debian/patches/series`
+
+Rules:
+
+* One patch per logical fix
+* Name it descriptively (not `fix.patch`)
+* No unrelated whitespace churn
+
+If you can’t explain the patch in one sentence, it’s too big.
 
 ---
 
-## 9. After Acceptance
+## 9. Build Source Package for Mentors
 
-Once merged:
+Mentors want **source-only uploads**.
 
-* Your patch enters Debian
-* Syncs to Testing
-* Eventually hits Stable
+```bash
+debuild -S -sa
+```
 
-Congrats. You fixed Linux instead of working around it.
+You should end up with:
+
+* `.dsc`
+* `.orig.tar.*`
+* `.debian.tar.xz`
+* `.changes`
+
+If any of these are missing, you did it wrong.
+
+---
+
+## 10. Upload to mentors.debian.net
+
+First time setup:
+
+* Create an account at [https://mentors.debian.net/](https://mentors.debian.net/)
+* Upload your GPG key
+* Make sure `debsign` works
+
+Upload:
+
+```bash
+dput mentors ../barcode_0.99-9.1_source.changes
+```
+
+If `dput` fails, read the error. It’s telling you exactly what you broke.
+
+---
+
+## 11. Send Mail to Debian Mentors
+
+After upload, **send a short, technical email**.
+
+Mailing list:
+
+```
+debian-mentors@lists.debian.org
+```
+
+Include:
+
+* Package name + version
+* mentors.debian.net URL
+* What the patch fixes
+* Why it matters
+
+No life story. No Markdown. Plain text.
+
+---
+
+## 12. After Acceptance
+
+Once sponsored:
+
+* Package enters Debian unstable
+* Syncs to testing
+* Eventually lands in stable
+
+Congrats. You didn’t just fix your system — you fixed it for everyone.
 
 ---
 
@@ -194,10 +261,11 @@ Congrats. You fixed Linux instead of working around it.
 * Fix upstream logic first
 * Debian changes must be minimal
 * Version numbers matter
-* Reviewers are not your QA
+* Sponsors are not your QA
 
 If future-me is tempted to hack around a broken package locally:
 
 Don’t.
 
-Fix it once. Fix it properly.
+Fix it once. Fix
+
