@@ -1,6 +1,6 @@
 ---
 title: 'Debian 13 Minimal Installation (XFCE + Bluetooth)'
-description: 'This guide assumes you **install Debian normally** using the official installer. No fancy netinst voodoo. Just don’t click the wrong checkbox and ruin it.'
+description: 'This guide assumes you install Debian normally using the official installer. No fancy netinst voodoo. Just don’t click the wrong checkbox and ruin it.'
 pubDate: 2026-02-02
 author: 'Mage'
 image: ''
