@@ -5,7 +5,7 @@ pubDate: 2026-02-02
 author: 'Mage'
 image: ''
 tags: ['package', 'debian']
-darft: true
+draft: true
 ---
 
 ## 0. Assumptions
