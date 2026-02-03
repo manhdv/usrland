@@ -30,7 +30,7 @@ Internet → Traefik :443 → Memos :5230
 ```yaml
 services:
   traefik:
-    image: traefik:latest
+    image: traefik:v3.0
     command:
       - "--api.dashboard=true"
       - "--providers.docker=true"
@@ -91,6 +91,8 @@ ports:
 Traefik talks to it internally.
 Exposing the port just invites scanners and regret.
 
+---
+
 ### 2. Volumes = your brain
 
 ```yaml
@@ -101,17 +103,21 @@ Delete the container? Fine.
 Delete the volume? Congrats, you wiped your memory.
 Back it up.
 
+---
+
 ### 3. HTTP challenge means port 80 is mandatory
 
 If HTTPS doesn’t work, it’s usually one of these:
+
 * DNS not pointing to your server
 * Port 80 blocked by firewall
-* acme.json has wrong permissions (should be 600)
+* `acme.json` has wrong permissions (should be `600`)
+
 Not Traefik’s fault. It’s yours.
 
 ---
 
-**Run it**
+## Run it
 
 ```bash
 docker compose up -d
@@ -129,36 +135,29 @@ First visit → create admin → done.
 
 ## Common failures (and who to blame)
 
-* No HTTPS
+### No HTTPS
 
-    * DNS is wrong
+* DNS is wrong
+* Port 80 blocked
+* ACME storage permission issue
 
-    * Port 80 blocked
+### 502 Bad Gateway
 
-    * ACME storage permission issue
+* Memos container not running
+* Wrong internal port (it’s `5230`, don’t freestyle)
 
-* 502 Bad Gateway
+### Traefik doesn’t route
 
-    * Memos container not running
-
-    * Wrong internal port (it’s 5230, don’t freestyle)
-
-* Traefik doesn’t route
-
-    * Host() rule typo
-
-    * Containers not on the same network
+* `Host()` rule typo
+* Containers not on the same network
 
 ---
 
 ## Why Memos is worth self-hosting
 
 * No cloud lock-in
-
 * Markdown, no ceremony
-
 * Local data
-
 * Doesn’t try to be your second brain with AI hallucinations
 
-If all you want is notes + thoughts, Memos beats most bloated “productivity” toys.
+If all you want is **notes + thoughts**, Memos beats most bloated “productivity” toys.
