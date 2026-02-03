@@ -39,6 +39,14 @@ This gives you:
 * `debian/` directory
 * A clean starting point
 
+Init git for version control:
+
+```bash
+git init
+git add .
+git commit -m "Import Debian source 0.99-9"
+```
+
 ---
 
 ## 2. Reproduce the Bug (Mandatory)
