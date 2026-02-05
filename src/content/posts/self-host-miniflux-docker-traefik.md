@@ -62,32 +62,41 @@ services:
       - proxy
 
   miniflux:
-    image: miniflux/miniflux:2.2
+    image: miniflux/miniflux:latest
     depends_on:
-      - miniflux-db
+      miniflux-db:
+        condition: service_healthy
     environment:
-      DATABASE_URL: postgres://miniflux:password@miniflux-db/miniflux?sslmode=disable
-      RUN_MIGRATIONS: 1
-      CREATE_ADMIN: 1
-      ADMIN_USERNAME: admin
-      ADMIN_PASSWORD: admin_password
+      - DATABASE_URL=postgres://miniflux:secret@miniflux-db/miniflux?sslmode=disable
+      - RUN_MIGRATIONS=1
+      - CREATE_ADMIN=1
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=password
     networks:
       - proxy
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.miniflux.rule=Host(`rss.example.com`)"
+      - "traefik.http.routers.miniflux.rule=Host(`rss.lakl.net`)"
       - "traefik.http.routers.miniflux.entrypoints=websecure"
       - "traefik.http.routers.miniflux.tls.certresolver=myresolver"
       - "traefik.http.services.miniflux.loadbalancer.server.port=8080"
 
   miniflux-db:
-    image: postgres:15
+    image: postgres:18
     environment:
-      POSTGRES_USER: miniflux
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: miniflux
+      - POSTGRES_USER=miniflux
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=miniflux
     volumes:
-      - ./miniflux/db:/var/lib/postgresql/data
+      # You may have to adjust the volume path depending on the version of Postgres
+      # Postgres 18 uses /var/lib/postgresql
+      # Postgres 17 and below uses /var/lib/postgresql/data
+      # See https://hub.docker.com/_/postgres#pgdata
+      - miniflux-db:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "miniflux"]
+      interval: 10s
+      start_period: 30s
     networks:
       - proxy
 
