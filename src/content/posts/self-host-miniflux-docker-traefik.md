@@ -76,7 +76,7 @@ services:
       - proxy
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.miniflux.rule=Host(`rss.lakl.net`)"
+      - "traefik.http.routers.miniflux.rule=Host(`rss.your-domain.tld`)"
       - "traefik.http.routers.miniflux.entrypoints=websecure"
       - "traefik.http.routers.miniflux.tls.certresolver=myresolver"
       - "traefik.http.services.miniflux.loadbalancer.server.port=8080"
