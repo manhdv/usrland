@@ -152,7 +152,7 @@ These variables are strictly one-time bootstrap helpers.
   ```bash
   chmod 600 letsencrypt/acme.json
   ```
-* Back up `./miniflux/db` regularly
+* Back up `/var/lib/docker/volumes/miniflux-db/_data` regularly
 
 ---
 
