@@ -4,7 +4,7 @@ description: 'AzerothCore provides a simple Docker setup that makes it easy to r
 pubDate: 2026-06-20
 author: 'Mage'
 image: ''
-tags: ['docker', 'azerothcore', 'selfhosting']
+tags: ['docker', 'azerothcore', 'selfhost']
 draft: false
 ---
 
