@@ -8,8 +8,6 @@ tags: ['cloudflare', 'warp', 'linux']
 draft: false
 ---
 
-# Installing Cloudflare WARP CLI on Linux
-
 Cloudflare WARP provides a secure and privacy-focused network connection by routing your traffic through Cloudflare's global network.
 
 This guide covers installing WARP CLI, registering your device, and connecting to the WARP network.

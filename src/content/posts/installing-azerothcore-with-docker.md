@@ -8,8 +8,6 @@ tags: ['docker', 'azerothcore', 'selfhosting']
 draft: false
 ---
 
-# Installing AzerothCore with Docker
-
 AzerothCore provides a simple Docker setup that makes it easy to run your own Wrath of the Lich King server without manually compiling the core or configuring databases.
 
 This guide covers:
