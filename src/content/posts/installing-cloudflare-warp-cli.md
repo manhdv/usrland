@@ -5,7 +5,7 @@ pubDate: 2026-06-20
 author: 'Mage'
 image: ''
 tags: ['cloudflare', 'warp', 'linux']
-draft: flase
+draft: false
 ---
 
 # Installing Cloudflare WARP CLI on Linux
