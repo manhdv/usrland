@@ -1,42 +1,25 @@
 ---
-title: 'Debian 13 Minimal Installation (Cinnamon + Bluetooth)'
-description: 'This guide assumes you install Debian normally using the official installer. No fancy netinst voodoo. Just don’t click the wrong checkbox and ruin it.'
-pubDate: 2026-06-30
+title: 'Build a Minimal Debian 13 Cinnamon Desktop'
+description: 'Skip Debian task packages and build a clean Cinnamon desktop from a minimal installation.'
+pubDate: 2026-02-02
 author: 'Mage'
 image: ''
-tags: ['cinnamon', 'debian', 'linux']
+tags: ['debian', 'cinnamon', 'linux']
 ---
 
-## 1. Install Debian (The Boring Part)
+## Overview
 
-Boot the Debian 13 installer and go through it as usual:
+This guide starts from a **minimal Debian 13 installation**—no desktop environment, no extra utilities, just a shell.
 
-* Language, locale, keyboard — whatever
-* Network — wired is easier, Wi-Fi works too
-* Disk partitioning — guided/manual, your call
-* User & root password — don’t be dumb
+Instead of installing Debian's Cinnamon task package, we'll install only the desktop itself and add the pieces we actually need.
 
-### Important Step: Software Selection
-
-When you reach **Software selection**:
-
-* **Uncheck EVERYTHING**
-
-  - [ ] Debian desktop environment
-  - [ ] GNOME / KDE / Cinnamon / XFCE / whatever
-  - [ ] Web server, SSH, standard system utilities
-
-Yes, **everything**. You want a clean, minimal system.
-
-Finish the installation and reboot.
-
-Congrats. You now have a black screen and a login prompt. That’s the point.
+The result is a clean, lightweight Cinnamon system that's easy to understand and maintain.
 
 ---
 
-## 2. Login and Update System
+## Update the System
 
-Log in with your user (or root if you enjoy bad habits), then:
+Before installing anything:
 
 ```bash
 sudo apt update
@@ -45,21 +28,20 @@ sudo apt upgrade
 
 ---
 
-## 3. Install Cinnamon Desktop
+## Install Cinnamon Core
 
-Install Cinnamon manually instead of Debian's desktop task packages:
+Install the core desktop without Debian's recommended packages:
 
 ```bash
 sudo apt install --no-install-recommends cinnamon-core lightdm
 ```
 
-If prompted, select **LightDM** as your default display manager.
+When prompted, choose **LightDM** as the default display manager.
 
-Enable and start it:
+Enable it:
 
 ```bash
 sudo systemctl enable lightdm
-sudo systemctl start lightdm
 ```
 
 Reboot:
@@ -68,81 +50,104 @@ Reboot:
 sudo reboot
 ```
 
-You should now boot into a clean Cinnamon desktop.
+After logging in, you'll have a functional Cinnamon desktop without all the extras bundled by the task package.
 
 ---
 
-## 4. Install Bluetooth Support
+## Enable Bluetooth
 
-A minimal Debian installation doesn't include Bluetooth support.
-
-Install the required packages:
+Install Bluetooth support:
 
 ```bash
 sudo apt install bluetooth bluez blueman
 ```
 
-Enable the Bluetooth service:
+Enable the service:
 
 ```bash
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 ```
 
-(Optional) Add your user to the Bluetooth group:
-
-```bash
-sudo usermod -aG bluetooth $USER
-```
-
-Log out and log back in.
+Blueman provides a simple graphical interface for pairing devices.
 
 ---
 
-## 5. Blueman (GUI Bluetooth Manager)
+## Starting Blueman Automatically
 
-Blueman usually starts automatically under Cinnamon.
+Normally Cinnamon starts Blueman by itself.
 
-If it doesn't:
+If not:
 
-* Open **Startup Applications**
-* Add a new startup program:
+**Menu → Startup Applications**
 
-  * **Name:** Blueman Applet
-  * **Command:** `blueman-applet`
+Add a startup entry:
 
-You can now pair Bluetooth headphones, keyboards, mice, and other devices.
+- **Name:** Blueman Applet
+- **Command:** `blueman-applet`
 
----
-
-## 6. Result
-
-You now have:
-
-* Debian 13
-* Minimal base system
-* Cinnamon desktop
-* LightDM display manager
-* Bluetooth support (BlueZ + Blueman)
-
-No giant Debian desktop task packages. Just the desktop you actually wanted.
+Log out and back in.
 
 ---
 
-## Notes
+## Optional Packages
 
-* For Wi-Fi management:
+A minimal installation intentionally leaves out many everyday tools.
+
+Install only what you need.
+
+### NetworkManager
 
 ```bash
 sudo apt install network-manager network-manager-gnome
 ```
 
-* For printing support:
+### Printing
 
 ```bash
 sudo apt install system-config-printer
 ```
 
-* Cinnamon works best with hardware acceleration, but it runs fine on most modern systems.
+### Archive Support
 
-That's it. Keep it minimal. Keep it sane.
+```bash
+sudo apt install file-roller
+```
+
+### Extra Terminal
+
+```bash
+sudo apt install gnome-terminal
+```
+
+(Cinnamon already ships with its own terminal, so this is purely optional.)
+
+---
+
+## Why `cinnamon-core`?
+
+Debian provides several ways to install Cinnamon.
+
+For a minimal setup, `cinnamon-core` is usually the better choice because it installs only the desktop environment instead of an entire software collection.
+
+Adding `--no-install-recommends` keeps the installation even smaller by avoiding optional packages that you may never use.
+
+You stay in control of what gets installed.
+
+---
+
+## Final Result
+
+You now have:
+
+- Debian 13
+- Cinnamon desktop
+- LightDM
+- BlueZ Bluetooth stack
+- Blueman Bluetooth manager
+
+No task packages.
+
+No unnecessary applications.
+
+Just a clean Cinnamon desktop ready for whatever comes next.
