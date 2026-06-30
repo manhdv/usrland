@@ -62,7 +62,7 @@ Append a new line at the bottom.
 
 ### Example: ext4 Drive
 
-```fstab
+```
 UUID=3e6c3f8e-9d7f-4b7b-9a61-9e9d9c9a1111  /mnt/data  ext4  defaults,noatime  0  2
 ```
 
@@ -85,7 +85,7 @@ UUID=<device-uuid>   <mount-point>   <fs-type>   <options>   <dump>   <fsck>
 
 ### NTFS (External / Shared with Windows)
 
-```fstab
+```
 UUID=XXXX-YYYY  /mnt/windows  ntfs  defaults,uid=1000,gid=1000,noatime  0  0
 ```
 
@@ -99,7 +99,7 @@ sudo apt install -y ntfs-3g
 
 ### FAT / USB Drives
 
-```fstab
+```
 UUID=ABCD-1234  /mnt/usb  vfat  defaults,uid=1000,gid=1000,noatime  0  0
 ```
 
@@ -134,13 +134,13 @@ If the drive shows up, you’re good.
 * Always keep a live USB nearby
 * For optional drives (USB, HDD that may be unplugged), use:
 
-```fstab
+```
 nofail,x-systemd.device-timeout=5s
 ```
 
 Example:
 
-```fstab
+```
 UUID=XXXX  /mnt/backup  ext4  defaults,nofail,noatime  0  2
 ```
 
