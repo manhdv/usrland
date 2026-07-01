@@ -1,7 +1,7 @@
 ---
 title: 'Build a Minimal Debian 13 Cinnamon Desktop'
 description: 'Skip Debian task packages and build a clean Cinnamon desktop from a minimal installation.'
-pubDate: 2026-02-02
+pubDate: 2026-06-30
 author: 'Mage'
 image: ''
 tags: ['debian', 'cinnamon', 'linux']
